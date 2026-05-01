@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @EnableWireMock(
-        @ConfigureWireMock(baseUrlProperties = "hello.service.url")
+        @ConfigureWireMock(baseUrlProperties = "custom-url")
 )
 @SpringBootTest(
-        properties = "hello.service.url=${remote.hello.service.url}",
+        properties = "hello.service.url=${custom-url}",
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
