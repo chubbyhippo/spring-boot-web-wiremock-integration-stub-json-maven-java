@@ -1,19 +1,14 @@
 package io.github.chubbyhippo.demo;
 
-import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import org.apache.hc.client5.http.impl.Wire;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
-import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.util.StreamUtils;
 import org.wiremock.spring.ConfigureWireMock;
 import org.wiremock.spring.EnableWireMock;
@@ -61,19 +56,6 @@ class DemoApplicationTests {
                         """)
                 .assertThat()
                 .hasStatusOk();
-
-//
-//        restTestClient.post()
-//                .uri("/hello")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .body("""
-//                        {
-//                          "name": "Wiremock"
-//                        }
-//                        """)
-//                .exchange()
-//                .expectStatus().isOk()
-//                .expectBody().jsonPath("$.message").isEqualTo("Hello Wiremock");
 
     }
 
