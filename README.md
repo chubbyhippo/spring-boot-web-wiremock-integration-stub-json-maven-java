@@ -1,1 +1,1 @@
-# spring-boot-web-wiremock-integration-maven-java
+# spring-boot-web-wiremock-integration-stub-json-maven-java
