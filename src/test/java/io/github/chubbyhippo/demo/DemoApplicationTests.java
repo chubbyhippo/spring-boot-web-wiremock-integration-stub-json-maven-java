@@ -23,12 +23,8 @@ import java.nio.charset.StandardCharsets;
         properties = "hello.service.url=${remote.hello.service.url}",
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
-//@AutoConfigureRestTestClient
 @AutoConfigureMockMvc
 class DemoApplicationTests {
-
-//    @Autowired
-//    RestTestClient restTestClient;
 
     @Autowired
     MockMvcTester mockMvcTester;
