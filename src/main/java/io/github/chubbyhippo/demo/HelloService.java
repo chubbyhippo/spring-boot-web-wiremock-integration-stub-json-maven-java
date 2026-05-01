@@ -1,5 +1,6 @@
 package io.github.chubbyhippo.demo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -7,10 +8,12 @@ import org.springframework.web.client.RestClient;
 public class HelloService {
 
     private final RestClient restClient;
+    @Value("${hello.service.url}")
+    private String url;
 
     public HelloService(RestClient.Builder restClientBuilder) {
         this.restClient = restClientBuilder
-                .baseUrl("http://localhost:9999")
+                .baseUrl(url)
                 .build();
     }
 
