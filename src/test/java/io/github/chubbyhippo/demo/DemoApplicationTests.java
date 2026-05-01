@@ -4,17 +4,17 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
-import org.springframework.util.StreamUtils;
 import org.wiremock.spring.ConfigureWireMock;
 import org.wiremock.spring.EnableWireMock;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 @EnableWireMock(
         @ConfigureWireMock(baseUrlProperties = "custom-url")
@@ -28,14 +28,13 @@ class DemoApplicationTests {
 
     @Autowired
     MockMvcTester mockMvcTester;
+    @Value("classpath:hello.json")
+    Resource resource;
 
     @Test
     @DisplayName("test get hello")
     void testGetHello() throws IOException {
-        var helloJson = StreamUtils.copyToString(
-                new ClassPathResource("hello.json").getInputStream(),
-                StandardCharsets.UTF_8
-        );
+        var helloJson = resource.getContentAsString(Charset.defaultCharset());
 
         WireMock.stubFor(WireMock.get("/hello")
                 .willReturn(WireMock.aResponse()
