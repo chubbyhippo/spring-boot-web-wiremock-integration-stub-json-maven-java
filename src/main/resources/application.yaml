@@ -1,3 +1,6 @@
 spring:
   application:
     name: demo
+hello:
+  service:
+    url: http://localhost:9999
