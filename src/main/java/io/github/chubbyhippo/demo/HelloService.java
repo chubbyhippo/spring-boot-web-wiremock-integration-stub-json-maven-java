@@ -10,6 +10,7 @@ public class HelloService {
     private final RestClient restClient;
 
     public HelloService(RestClient.Builder restClientBuilder,
+                        // must be here to make sure the value is injected
                         @Value("${hello.service.url}") String url) {
         this.restClient = restClientBuilder
                 .baseUrl(url)
